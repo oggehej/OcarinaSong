@@ -1,0 +1,9 @@
+# OcarinaSong configuration file
+#
+# DetectorRadius defines the maximum/default length players have to be from a detector
+# HealingRadius defines how close a player have to play Song of Healing
+# CalmRadius defines how close you have to be to a wolf to tame it with Zelda's Lullaby
+
+DetectorRadius: 30
+HealingRadius: 10
+CalmRadius: 10

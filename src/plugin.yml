@@ -1,0 +1,53 @@
+name: OcarinaSong
+main: com.creeperevents.oggehej.ocarinasong.OcarinaSong
+version: 2.0
+description: Play the ocarina!
+author: oggehej
+commands:
+  ocarina:
+    description: List of songs
+    usage: /<command> [reload]
+permissions:
+  ocarina:
+    description: Allow user to use the ocarina
+    default: op
+  ocarina.reload:
+    description: Allow user to reload the config
+    default: op
+  ocarina.sign.create:
+    description: Allow user to create all types of signs
+    default: op
+  ocarina.sign.play.awaken:
+    default: true
+  ocarina.sign.play.time:
+    default: true
+  ocarina.sign.play.zelda:
+    default: true
+  ocarina.sign.create.awaken:
+    default: op
+  ocarina.sign.create.time:
+    default: op
+  ocarina.sign.create.zelda:
+    default: op
+  ocarina.play.healing.animal:
+    default: op
+  ocarina.play.healing.pig:
+    default: op
+  ocarina.play.healing.burn:
+    default: op
+  ocarina.play.healing:
+    default: op
+  ocarina.play.awaken:
+    default: op
+  ocarina.play.epona:
+    default: op
+  ocarina.play.storms:
+    default: op
+  ocarina.play.time:
+    default: op
+  ocarina.play.zelda:
+    default: op
+  ocarina.play.zelda.tame:
+    default: op
+  ocarina.tugjockey:
+    default: true
