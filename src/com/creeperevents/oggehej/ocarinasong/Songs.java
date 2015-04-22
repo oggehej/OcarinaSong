@@ -2,7 +2,6 @@ package com.creeperevents.oggehej.ocarinasong;
 
 import java.util.EnumSet;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -133,7 +132,9 @@ public enum Songs
 			{
 				public void run(Player player, OcarinaSong plugin)
 				{
-					Bukkit.getServer().broadcastMessage(ChatColor.GREEN + player.getDisplayName() + " has changed the weather!");
+					for(Player p : player.getWorld().getPlayers())
+						if(p.hasPermission("ocarina.broadcast.storm"))
+							p.sendMessage(ChatColor.GREEN + player.getDisplayName() + " has changed the weather!");
 					player.getWorld().setStorm(!player.getWorld().hasStorm());
 				}
 			},
@@ -143,7 +144,9 @@ public enum Songs
 			{
 				public void run(Player player, OcarinaSong plugin)
 				{
-					Bukkit.getServer().broadcastMessage(ChatColor.GREEN + player.getDisplayName() + " has changed the time of day!");
+					for(Player p : player.getWorld().getPlayers())
+						if(p.hasPermission("ocarina.broadcast.time"))
+							p.sendMessage(ChatColor.GREEN + player.getDisplayName() + " has changed the time of day!");
 					player.getWorld().setTime(player.getWorld().getTime() + 12000);
 				}
 			},

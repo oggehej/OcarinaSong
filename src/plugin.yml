@@ -14,9 +14,10 @@ permissions:
   ocarina.reload:
     description: Allow user to reload the config
     default: op
-  ocarina.sign.create:
-    description: Allow user to create all types of signs
-    default: op
+  ocarina.broadcast.time:
+    default: true
+  ocarina.broadcast.storm:
+    default: true
   ocarina.sign.play.awaken:
     default: true
   ocarina.sign.play.time:
