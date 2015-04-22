@@ -1,6 +1,6 @@
 name: OcarinaSong
 main: com.creeperevents.oggehej.ocarinasong.OcarinaSong
-version: 2.0
+version: 2.0.1
 description: Play the ocarina!
 author: oggehej
 commands:
