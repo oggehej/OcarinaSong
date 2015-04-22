@@ -199,6 +199,17 @@ public class PlayerListener implements Listener
 				return;
 			}
 
+			try {
+				if(Integer.parseInt(event.getLine(2)) > plugin.getConfig().getInt("DetectorRadius"))
+				{
+					event.getPlayer().sendMessage(ChatColor.BLUE + "That block radius is higher than the maximum!\n"
+							+ "You can change that in the configuration file");
+					event.getBlock().breakNaturally();
+					event.setCancelled(true);
+					return;
+				}
+			} catch(Exception e) {}
+
 			event.setLine(0, "§b[" + song.signName + "]");
 			event.getPlayer().sendMessage(ChatColor.AQUA + "Created " + ChatColor.GRAY
 					+ WordUtils.capitalizeFully(song.toString().toLowerCase().replace('_', ' ')) + ChatColor.AQUA + " Detector!");

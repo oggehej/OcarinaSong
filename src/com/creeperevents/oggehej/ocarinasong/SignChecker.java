@@ -82,7 +82,7 @@ class SignChecker extends BukkitRunnable
 								try
 								{
 									if (Integer.parseInt(sign.getLine(1)) > 0)
-										ticks = Integer.parseInt(sign.getLine(2));
+										ticks = Integer.parseInt(sign.getLine(1));
 								} catch (NumberFormatException e) {}
 
 								boolean button = state.getData() instanceof Button;
