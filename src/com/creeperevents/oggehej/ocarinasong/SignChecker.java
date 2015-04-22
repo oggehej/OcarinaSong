@@ -45,7 +45,7 @@ class SignChecker extends BukkitRunnable
 						int maxDistance = radius;
 						try
 						{
-							int signMax = Integer.parseInt(sign.getLine(1));
+							int signMax = Integer.parseInt(sign.getLine(2));
 							if (signMax > 0)
 								maxDistance = signMax;
 						}
@@ -80,7 +80,7 @@ class SignChecker extends BukkitRunnable
 								int ticks = 20;
 								try
 								{
-									if (Integer.parseInt(sign.getLine(2)) > 0)
+									if (Integer.parseInt(sign.getLine(1)) > 0)
 										ticks = Integer.parseInt(sign.getLine(2));
 								} catch (NumberFormatException e) {}
 
