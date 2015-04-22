@@ -7,6 +7,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.material.Button;
+import org.bukkit.material.Lever;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class SignChecker extends BukkitRunnable
@@ -73,7 +74,7 @@ class SignChecker extends BukkitRunnable
 						for(BlockFace face : new BlockFace[] {BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.WEST, BlockFace.EAST})
 						{
 							Block mat = block.getRelative(face);
-							if(mat.getType() == Material.STONE_BUTTON || mat.getType() == Material.WOOD_BUTTON)
+							if(mat.getType() == Material.STONE_BUTTON || mat.getType() == Material.WOOD_BUTTON || mat.getType() == Material.LEVER)
 							{
 								BlockState state = mat.getState();
 
@@ -84,7 +85,9 @@ class SignChecker extends BukkitRunnable
 										ticks = Integer.parseInt(sign.getLine(2));
 								} catch (NumberFormatException e) {}
 
-								new CustomRunnable((Button) state.getData(), state, ticks).runTask(plugin);
+								boolean button = state.getData() instanceof Button;
+
+								new CustomRunnable(state, button, ticks).runTask(plugin);
 							}
 						}
 					}
@@ -92,31 +95,37 @@ class SignChecker extends BukkitRunnable
 	}
 
 	private class CustomRunnable extends BukkitRunnable {
-		Button button;
 		int ticks;
 		BlockState state;
-		CustomRunnable(Button button, BlockState state, int ticks) {
-			this.button = button;
+		boolean button;
+		CustomRunnable(BlockState state, boolean button, int ticks) {
 			this.ticks = ticks;
 			this.state = state;
+			this.button = button;
 		}
 		@Override
 		public void run() {
-			button.setPowered(true);
+			if(button)
+				((Button) state.getData()).setPowered(true);
+			else
+				((Lever) state.getData()).setPowered(true);
 			state.update();
-			new UberCustomRunnable(button, state).runTaskLater(plugin, ticks);
+			new UberCustomRunnable(state, button).runTaskLater(plugin, ticks);
 		}
 
 		class UberCustomRunnable extends BukkitRunnable {
-			Button button;
+			boolean button;
 			BlockState state;
-			UberCustomRunnable(Button button, BlockState state) {
+			UberCustomRunnable(BlockState state, boolean button) {
 				this.button = button;
 				this.state = state;
 			}
 			@Override
 			public void run() {
-				button.setPowered(false);
+				if(button)
+					((Button) state.getData()).setPowered(false);
+				else
+					((Lever) state.getData()).setPowered(false);
 				state.update();
 			}
 		}
