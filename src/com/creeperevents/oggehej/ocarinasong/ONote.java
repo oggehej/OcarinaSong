@@ -1,7 +1,6 @@
 package com.creeperevents.oggehej.ocarinasong;
 
-public enum ONote
-{
+public enum ONote {
 	UP(20),
 	DOWN(11),
 	LEFT(17),
@@ -11,15 +10,23 @@ public enum ONote
 
 	private int num;
 
-	private ONote(int num)
-	{
+	private ONote(int num) {
 		this.num = num;
 	}
 
+	/**
+	 * Return the pitch (float between 0 and 2) for the note
+	 * @return Pitch
+	 */
 	public float getPitch() {
 		return toPitch(num);
 	}
-	
+
+	/**
+	 * Return the pitch (a float between 0 and 2) of a {@code NoteBlock} setting
+	 * @param num An integer between 0 and 24
+	 * @return Pitch
+	 */
 	public static float toPitch(int num) {
 		switch (num) {
 		case 0: return 0.5F;
