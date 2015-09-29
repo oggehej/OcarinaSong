@@ -1,6 +1,5 @@
 package com.creeperevents.oggehej.ocarinasong;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
@@ -21,7 +20,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.mcstats.MetricsLite;
 
 public class OcarinaSong extends JavaPlugin implements CommandExecutor {
 	WeakHashMap<Player, SizedStack<ONote>> playingPlayers = new WeakHashMap<Player, SizedStack<ONote>>();
@@ -55,12 +53,6 @@ public class OcarinaSong extends JavaPlugin implements CommandExecutor {
 		ocarinaRecipe.setIngredient('l', lapis.getData());
 		ocarinaRecipe.setIngredient('b', Material.CLAY);
 		getServer().addRecipe(ocarinaRecipe);
-
-		// Initialise metrics
-		try {
-			MetricsLite metrics = new MetricsLite(this);
-			metrics.start();
-		} catch (IOException e) {}
 	}
 
 	public void onDisable() {
