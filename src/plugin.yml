@@ -1,7 +1,7 @@
-name: OcarinaSong
-main: com.creeperevents.oggehej.ocarinasong.OcarinaSong
-version: 2.0.1
-description: Play the ocarina!
+name: ${project.name}
+main: ${main.class}
+version: ${project.version}
+description: ${project.description}
 author: oggehej
 commands:
   ocarina:
